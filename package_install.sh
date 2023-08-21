@@ -1,6 +1,6 @@
 #! /bin/bash
 
-LOGFILE=/tmp/Abhishek_$(date +%F).log
+LOGFILE=/tmp/Abhishek_$(date +%F-%Hh-%Mm-%Ss).log
 
 R="\e[31m"
 N="\e[0m"
