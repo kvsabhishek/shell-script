@@ -4,7 +4,7 @@ list_of_packages = $@
 
 if [ $(id -0) -eq 0 ]
 then
-    for package in list_of_packages
+    for package in $list_of_packages
     do
         sudo yum install package -y
     done
