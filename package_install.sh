@@ -1,6 +1,5 @@
 #! /bin/bash
 
-LIST_OF_PACKAGE= $@
 LOGFILE=/tmp/$(date +%F).log
 
 R="\e[31m"
@@ -20,7 +19,7 @@ VALIDATE(){
 
 if [ "$(id -u)" -eq 0 ]
 then
-    for PACKAGE in $LIST_OF_PACKAGE
+    for PACKAGE in $@
     do
         yum install $PACKAGE -y &>>$LOGFILE
         VALIDATE "$PACKAGE" $?
