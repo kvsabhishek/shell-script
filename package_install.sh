@@ -1,7 +1,6 @@
 #! /bin/bash
 
 LIST_OF_PACKAGE= $@
-USERID= $(id -u)
 LOGFILE=/tmp/$(date +%F).log
 
 R="\e[31m"
@@ -19,7 +18,7 @@ VALIDATE(){
     fi
 }
 
-if [ "$USERID" -eq 0 ]
+if [ "$(id -u)" -eq 0 ]
 then
     for PACKAGE in $LIST_OF_PACKAGE
     do
