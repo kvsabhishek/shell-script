@@ -19,7 +19,7 @@ VALIDATE(){
     fi
 }
 
-if [ $USERID -eq 0 ]
+if [ "$USERID" -eq 0 ]
 then
     for PACKAGE in $LIST_OF_PACKAGE
     do
