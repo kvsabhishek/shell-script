@@ -1,6 +1,7 @@
 #! /bin/bash
 
 LIST_OF_PACKAGE= $@
+USERID= $(id -u)
 
 VALIDATE(){
     if [ $2 -gt 0 ]
@@ -11,7 +12,7 @@ VALIDATE(){
     fi
 }
 
-if [ $(id -u) -eq 0 ]
+if [ $USERID -eq 0 ]
 then
     for PACKAGE in $LIST_OF_PACKAGE
     do
