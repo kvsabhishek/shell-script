@@ -21,7 +21,7 @@ if [ "$(id -u)" -eq 0 ]
 then
     for PACKAGE in $@
     do
-        yum install $PACKAGE -y &>$LOGFILE
+        yum install $PACKAGE -y &>>$LOGFILE
         VALIDATE "$PACKAGE" $?
     done
 else
