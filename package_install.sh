@@ -2,7 +2,7 @@
 
 LIST_OF_PACKAGE= $@
 USERID= $(id -u)
-LOGFILE=/tmp/$(date %+F).log
+LOGFILE=/tmp/$(date +%F).log
 
 R="\e[31m"
 N="\e[0m"
