@@ -11,9 +11,9 @@ G="\e[32m]"
 VALIDATE(){
     if [ $2 -gt 0 ]
     then 
-        echo "$1 installation ....... $R FAILED $N"
+        echo -e "$1 installation ....... $R FAILED $N"
     else    
-        exho "$1 installation ....... $G SUCCESS $N"
+        echo -e "$1 installation ....... $G SUCCESS $N"
     fi
 }
 
