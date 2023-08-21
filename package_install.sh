@@ -2,7 +2,7 @@
 
 list_of_packages = $@
 
-if [ $(id -0) -eq 0 ]
+if [ $(id -u) -eq 0 ]
 then
     for package in $list_of_packages
     do
