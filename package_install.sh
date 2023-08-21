@@ -16,10 +16,10 @@ if [ $USERID -eq 0 ]
 then
     for PACKAGE in $LIST_OF_PACKAGE
     do
-        sudo yum install $PACKAGE -y
+        yum install $PACKAGE -y
         VALIDATE $PACKAGE $?
     done
 else
     echo "Run using sudo user"
     exit 1
-if
+fi
