@@ -24,7 +24,7 @@ VALIDATE(){
 
 if [ $(id -u) -gt 0 ]
 then
-    echo -e "$R ERROR:::Run using sudo access"
+    echo -e "$R ERROR:::Run using sudo access$N"
     exit 1
 fi
 
