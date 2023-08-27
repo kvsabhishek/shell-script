@@ -16,6 +16,6 @@ do
 
     if [ ${disk_usage} > ${DISK_USAGE_THRESHOLD} ]
     then
-        echo -e "$Y WARNING::: Disk $disk_name usage is $disk_usage which is above threshhold $DISK_USAGE_THRESHOLD $N"
+        echo -e "$Y WARNING::: Disk $disk_name usage is $disk_usage% which is above threshhold $DISK_USAGE_THRESHOLD% $N"
     fi
 done <<< $DISK_USAGE
