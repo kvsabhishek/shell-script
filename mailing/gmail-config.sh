@@ -2,9 +2,7 @@ N="\e[0m"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-
-set -f
-
+``
 LOG_DIR=/tmp
 DATE=$(date +%F-%Hh-%Mm-%Ss)
 LOG_FILE=$LOG_DIR/$0-$DATE.log
