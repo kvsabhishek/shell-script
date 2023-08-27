@@ -26,31 +26,31 @@ if [ $(id -u) -gt 0 ]
 then
     echo -e "$R ERROR:::Run using sudo access$N"
     exit 1
+else
+    yum install postfix -y
+    VALIDATE $? "Installing Postfix"
+
+    yum install cyrus-sasl-plain -y
+    VALIDATE $? "Installing cyrus-sasl-plain"
+
+    yum install mailx -y
+    VALIDATE $? "Installing mailx"
+
+    systemctl restart postfix 
+    VALIDATE $? "Restating postfix"
+
+    systemctl enable postfix
+    VALIDATE $? "Enabling postfix"
+
+    for line in "${CONFIG_LINES[@]}"
+    do
+        sed -i '$a\'"$line" "/etc/postfix/main.cf"
+    done
+    VALIDATE $? "Configuring postfix gmail"
+
+    touch /etc/postfix/sasl_passwd
+    "${SASL_PASSWD}" > /etc/postfix/sasl_passwd
+
+    postmap /etc/postfix/sasl_passwd
+    VALIDATE $? "Creating a Postfix lookup table from the sasl_passwd"
 fi
-
-yum install postfix -y
-VALIDATE $? "Installing Postfix"
-
-yum install cyrus-sasl-plain -y
-VALIDATE $? "Installing cyrus-sasl-plain"
-
-yum install mailx -y
-VALIDATE $? "Installing mailx"
-
-systemctl restart postfix 
-VALIDATE $? "Restating postfix"
-
-systemctl enable postfix
-VALIDATE $? "Enabling postfix"
-
-for line in "${CONFIG_LINES[@]}"
-do
-    sed -i '$a\'"$line" "/etc/postfix/main.cf"
-done
-VALIDATE $? "Configuring postfix gmail"
-
-touch /etc/postfix/sasl_passwd
-${SASL_PASSWD} > /etc/postfix/sasl_passwd
-
-postmap /etc/postfix/sasl_passwd
-VALIDATE $? "Creating a Postfix lookup table from the sasl_passwd"
