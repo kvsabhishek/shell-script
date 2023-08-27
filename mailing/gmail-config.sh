@@ -49,7 +49,7 @@ else
     VALIDATE $? "Configuring postfix gmail"
 
     touch /etc/postfix/sasl_passwd
-    "${SASL_PASSWD}" > /etc/postfix/sasl_passwd
+    "$SASL_PASSWD" > /etc/postfix/sasl_passwd
 
     postmap /etc/postfix/sasl_passwd
     VALIDATE $? "Creating a Postfix lookup table from the sasl_passwd"
