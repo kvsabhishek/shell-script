@@ -14,7 +14,7 @@ do
     disk_name=$(echo $line | awk '{print $1}')
     disk_usage=$(echo $line | awk '{print $1}' | cut -d % -f1)
 
-    if [ $disk_usage -gt $DISK_USAGE_THRESHOLD ]
+    if [ $disk_usage == $DISK_USAGE_THRESHOLD ]
     then
         echo "$Y WARNING::: Disk $disk_name usage is $disk_usage which is above threshhold $DISK_USAGE_THRESHOLD $N"
     fi
