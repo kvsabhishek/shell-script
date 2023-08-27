@@ -12,7 +12,7 @@ DISK_USAGE_THRESHOLD=1
 while IFS= read line
 do 
     disk_name=$(echo $line | awk '{print $1}')
-    disk_usage=$(echo $line | awk '{print $1}' | cut -d % -f1)
+    disk_usage=$(echo $line | awk '{print $6}' | cut -d % -f1)
 
     if [ ${disk_usage} > ${DISK_USAGE_THRESHOLD} ]
     then
