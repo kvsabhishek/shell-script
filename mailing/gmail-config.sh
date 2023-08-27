@@ -13,7 +13,7 @@ read -p "Enter gmail mail id: " MAIL
 SASL_PASSWD="[smtp.gmail.com]:587 $MAIL:$PASS"
 
 VALIDATE(){
-    if [ $1 -gt 0]
+    if [ $1 -gt 0 ]
     then
         echo -e "$2-------->$R FAILURE$N"
         exit 2
