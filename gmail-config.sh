@@ -27,16 +27,16 @@ then
     echo -e "$R ERROR:::Run using sudo access$N"
     exit 1
 else
-    yum install postfix -y
+    yum install postfix -y &>>$LOG_FILE
     VALIDATE $? "Installing Postfix"
 
-    yum install cyrus-sasl-plain -y
+    yum install cyrus-sasl-plain -y &>>$LOG_FILE
     VALIDATE $? "Installing cyrus-sasl-plain"
 
-    yum install mailx -y
+    yum install mailx -y &>>$LOG_FILE
     VALIDATE $? "Installing mailx"
 
-    systemctl restart postfix 
+    systemctl restart postfix
     VALIDATE $? "Restating postfix"
 
     systemctl enable postfix
@@ -54,4 +54,6 @@ else
 
     postmap /etc/postfix/sasl_passwd
     VALIDATE $? "Creating a Postfix lookup table from the sasl_passwd"
+
+    echo "Hi!! postfix is configure properly on $(date). This is a test mail for you as a confirmation" | mail -s "message" ${MAIL}
 fi
