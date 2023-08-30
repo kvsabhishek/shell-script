@@ -59,15 +59,3 @@ else
     echo "Hi!! postfix is configure properly on $(date). This is a test mail for you as a confirmation" | mail -s "message" ${MAIL}
 fi
 
-
-
-
-# #!/bin/bash
-
-# package_name="package-name"
-
-# if yum list installed $package_name >/dev/null 2>&1; then
-#     echo "$package_name is installed."
-# else
-#     echo "$package_name is not installed."
-# fi
