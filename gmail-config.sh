@@ -8,9 +8,6 @@ DATE=$(date +%F-%Hh-%Mm-%Ss)
 LOG_FILE=$LOG_DIR/$0-$DATE.log
 
 CONFIG_LINES=("relayhost = [smtp.gmail.com]:587" "smtp_use_tls = yes" "smtp_sasl_auth_enable = yes" "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" "smtp_sasl_security_options = noanonymous" "smtp_sasl_tls_security_options = noanonymous")
-read -p "Enter gmail password: " PASS
-read -p "Enter gmail mail id: " MAIL
-SASL_PASSWD="[smtp.gmail.com]:587 $MAIL:$PASS"
 
 VALIDATE(){
     if [ $1 -gt 0 ]
@@ -47,6 +44,10 @@ else
         sed -i '$a\'"$line" "/etc/postfix/main.cf"
     done
     VALIDATE $? "Configuring postfix gmail"
+
+    read -p "Enter gmail password: " PASS
+    read -p "Enter gmail mail id: " MAIL
+    SASL_PASSWD="[smtp.gmail.com]:587 $MAIL:$PASS"
 
     touch /etc/postfix/sasl_passwd
     #sed -i '$a\'"$SASL_PASSWD" "/etc/postfix/sasl_passwd"
