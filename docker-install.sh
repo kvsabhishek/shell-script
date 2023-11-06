@@ -1,8 +1,10 @@
 #!/bin/bash
 
+LOGFILE=/tmp/$0/$DATE.log
+
 R="\e[31m"
 N="\e[0m"
-G="\e[32m]"
+G="\e[32m"
 
 VALIDATE(){
     if [ $2 -gt 0 ]
@@ -27,18 +29,22 @@ then
 
     VALIDATE "Deleting old versions" $?
 
-    yum install -y yum-utils
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum install -y yum-utils &>>$LOGFILE
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo &>>$LOGFILE
 
     VALIDATE "Set up the repository" $?
 
-    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>>$LOGFILE
 
     VALIDATE "Installing docker" $?
 
-    systemctl start docker
+    systemctl start docker &>>$LOGFILE
 
     VALIDATE "Starting docker service" $?
+
+    systemctl enable docker &>>$LOGFILE
+
+    VALIDATE "Enabling docker service" $?
 
 else
     echo $R "RUN USING SUDO USER" $N
