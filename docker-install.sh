@@ -36,7 +36,7 @@ then
 
     VALIDATE "Set up the repository" $?
 
-    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>>$LOGFILE
+    yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>>$LOGFILE
 
     VALIDATE "Installing docker" $?
 
