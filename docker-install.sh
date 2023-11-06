@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE=/tmp/$0/$DATE.log
+LOGFILE=/tmp/docker-$DATE.log
 
 R="\e[31m"
 N="\e[0m"
