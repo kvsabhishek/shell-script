@@ -10,7 +10,7 @@ VALIDATE(){
         echo -e "$1  ....... $R FAILED $N"
     else    
         echo -e "$1 ....... $G SUCCESS $N"
-  fi
+    fi
 }
 
 if [ "$(id -u)" -eq 0 ]
@@ -25,20 +25,20 @@ then
                   docker-logrotate \
                   docker-engine
 
-    VALIDATE $? "Deleting old versions"
+    VALIDATE "Deleting old versions" $?
 
     yum install -y yum-utils
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-    VALIDATE $? "Set up the repository" 
+    VALIDATE "Set up the repository" $?
 
     yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-    VALIDATE $? "Installing docker"
+    VALIDATE "Installing docker" $?
 
     systemctl start docker
 
-    VALIDATE $? "Starting docker service"
+    VALIDATE "Starting docker service" $?
 
 else
     echo $R "RUN USING SUDO USER" $N
