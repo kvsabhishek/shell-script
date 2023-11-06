@@ -25,7 +25,7 @@ then
                   docker-latest \
                   docker-latest-logrotate \
                   docker-logrotate \
-                  docker-engine
+                  docker-engine &>>$LOGFILE
 
     VALIDATE "Deleting old versions" $?
 
