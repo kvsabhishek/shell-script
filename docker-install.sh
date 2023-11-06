@@ -1,6 +1,8 @@
 #!/bin/bash
 
-LOGFILE=/tmp/docker-$DATE.log
+LOGSDIR=/tmp
+SCRIPT_NAME=$(basename "$0")
+LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
 
 R="\e[31m"
 N="\e[0m"
