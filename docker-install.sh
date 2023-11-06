@@ -16,7 +16,7 @@ VALIDATE(){
 if [ "$(id -u)" -eq 0 ]
 then
     
-    sudo yum remove docker \
+    yum remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -27,16 +27,16 @@ then
 
     VALIDATE $? "Deleting old versions"
 
-    sudo yum install -y yum-utils
-    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum install -y yum-utils
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
     VALIDATE $? "Set up the repository" 
 
-    sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
     VALIDATE $? "Installing docker"
 
-    sudo systemctl start docker
+    systemctl start docker
 
     VALIDATE $? "Starting docker service"
 
